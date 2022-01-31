@@ -7,9 +7,11 @@ $(document).ready(function() {
         var time = $(this).siblings(".col-md-10").attr("id");
         var text = $(this).siblings(".col-md-10").val();
 
+        // save to local storage
         localStorage.setItem(time, text);
     });
 
+    // get items from local storage
     $("#9").val(localStorage.getItem("9"));
     $("#10").val(localStorage.getItem("10"));
     $("#11").val(localStorage.getItem("11"));
@@ -21,6 +23,7 @@ $(document).ready(function() {
     $("#17").val(localStorage.getItem("17"));
     $("#18").val(localStorage.getItem("18"));
 
+    // remove and add classes for text area based on time of day
     $(".col-md-10").each(function() {
         var currentHour = moment().hour();
         var idHour = parseInt($(this).attr("id"));
@@ -40,23 +43,5 @@ $(document).ready(function() {
             $(this).removeClass("present");
             $(this).addClass("future");
         }
-
-        // for (var i = 9; i < 19; i++) {
-        //     if (i < currentHour) {
-        //         classList.add("past");
-        //         classList.remove("present");
-        //         classList.remove("future");
-        //     }
-        //     else if (i === currentHour) {
-        //         classList.remove("past");
-        //         classList.add("present");
-        //         classList.remove("future");
-        //     }
-        //     else {
-        //         classList.remove("past");
-        //         classList.remove("present");
-        //         classList.add("future");
-        //     }
-        // }
     })    
 })
